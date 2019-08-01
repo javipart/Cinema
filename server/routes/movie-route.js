@@ -11,4 +11,14 @@ router.post('/', (req, res) => {
     })
 });
 
+router.get('/', (req, res) => {
+    Movie.find()
+        .then((movies) => {
+            res.send(movies);
+        })
+        .catch((err) => {
+            res.send(err);
+        });
+});
+
 module.exports = router;

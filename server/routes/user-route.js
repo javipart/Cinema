@@ -3,12 +3,16 @@ const User = require('../models/user');
 
 const router = express.Router();
 
-router.post('/', (req, res) => {
-    console.log(req.body);
-    User.create(req.body);
-    res.send({
-        status: 'ok',
-    })
+router.post('/', async (req, res) => {
+    await User.create(req.body);
+
+    User.find({ "email": req.body.email })
+        .then((user) => {
+            res.send({
+                status: 'ok',
+                id: user[0]._id,
+            });
+        });
 });
 
 module.exports = router;

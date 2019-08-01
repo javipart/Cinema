@@ -1,22 +1,20 @@
 const express = require('express');
-const Turn = require('../models/turn');
-const Movie = require('../models/movie');
+const Reservation = require('../models/reservation');
+
 const router = express.Router();
 
 router.post('/', (req, res) => {
     console.log(req.body);
-    Turn.create(req.body);
+    Reservation.create(req.body);
     res.send({
         status: 'ok',
-    });
+    })
 });
 
 router.get('/', (req, res) => {
-    Turn.find()
-        .populate('movie')
-        .exec()
-        .then((turn) => {
-            res.send(turn);
+    Reservation.find()
+        .then((movies) => {
+            res.send(movies);
         })
         .catch((err) => {
             res.send(err);
