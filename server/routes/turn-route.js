@@ -1,6 +1,6 @@
 const express = require('express');
 const Turn = require('../models/turn');
-const Movie = require('../models/movie');
+
 const router = express.Router();
 
 router.post('/', (req, res) => {

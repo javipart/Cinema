@@ -13,8 +13,19 @@ router.post('/', (req, res) => {
 
 router.get('/', (req, res) => {
     Reservation.find()
-        .then((movies) => {
-            res.send(movies);
+        .populate({
+            path: 'chair' ,
+            populate: {
+                path: 'turn',
+                populate: {
+                    path: 'movie',
+                }
+            }
+        })
+        .populate('user')
+        .exec()
+        .then((reservations) => {
+            res.send(reservations);
         })
         .catch((err) => {
             res.send(err);

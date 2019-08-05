@@ -18,4 +18,4 @@ const reservationSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('turns', reservationSchema);
+module.exports = mongoose.model('reservations', reservationSchema);

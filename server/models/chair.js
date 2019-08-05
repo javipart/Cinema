@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const chairs = mongoose.model('chairs');
+const turns = mongoose.model('turns');
 
 const { Schema } = mongoose;
 
@@ -9,12 +9,12 @@ const chairSchema = new Schema({
     required: true,
   },
   row: {
-    type: Number,
+    type: String,
     required: true,
   },
   turn: {
       type: Schema.Types.ObjectId,
-      ref: 'chairs',
+      ref: 'turns',
   }
 });
 
