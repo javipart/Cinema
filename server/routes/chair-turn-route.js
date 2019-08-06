@@ -6,7 +6,6 @@ const router = express.Router();
 router.post('/', (req,res) => {
     const { id } = req.body;
     let idTurns = [];
-    console.log(id);
     Chair.find()
         .then((chairs) => {
             chairs.forEach(function(chair) {
